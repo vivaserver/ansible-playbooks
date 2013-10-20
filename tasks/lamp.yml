@@ -1,0 +1,23 @@
+---
+- name: Ensure packages available
+  apt: pkg=$item state=present
+  with_items:
+    - libapache2-mod-php5
+    - mysql-server
+    - php5-cli
+    - php5-curl
+    - php5-gd
+  sudo: yes
+
+- name: Ensure LA(M)P is running
+  service: name=mysql state=started
+  sudo: yes
+
+- name: Ensure nice default HTTP index
+  copy: src=tasks/lamp.html dest=/var/www/index.html
+  sudo: yes
+
+- name: Ensure Apache2 modules
+  command: a2enmod rewrite creates=/etc/apache2/mods-enabled/rewrite.load
+  notify: restart apache2
+  sudo: yes

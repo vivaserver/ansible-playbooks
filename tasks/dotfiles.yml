@@ -1,0 +1,21 @@
+---
+- name: Ensure packages available
+  apt: pkg=$item state=present
+  with_items:
+    - curl
+    - git
+    - mc
+    - rsync
+    - vim
+    - wget
+
+- name: Clone dot files
+  git: repo=https://github.com/vivaserver/dotfiles dest=~/dotfiles
+- name: Install dot files
+  command: dotfiles/install.sh --force creates=.gitconfig
+
+- name: Install Vim vundle plugin
+  git: repo=https://github.com/gmarik/vundle.git dest=~/.vim/bundle/vundle
+- name: Install Vim vundle plugins
+  command: vim +BundleInstall +qall creates=.vim/bundle/ctrlp.vim
+
