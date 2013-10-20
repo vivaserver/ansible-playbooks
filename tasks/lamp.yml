@@ -14,7 +14,7 @@
   sudo: yes
 
 - name: Ensure nice default HTTP index
-  copy: src=tasks/lamp.html dest=/var/www/index.html
+  copy: src=lamp.html dest=/var/www/index.html
   sudo: yes
 
 - name: Ensure Apache2 modules

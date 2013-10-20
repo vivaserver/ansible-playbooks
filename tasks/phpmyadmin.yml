@@ -5,11 +5,11 @@
   sudo: yes
 
 - name: Ensure phpmyadmin setup
-  copy: src=tasks/phpmyadmin.conf dest=/etc/dbconfig-common/
+  copy: src=phpmyadmin.conf dest=/etc/dbconfig-common/
   sudo: yes
 
 - name: Ensure phpmyadmin configured
-  copy: src=tasks/phpmyadmin.php dest=/etc/phpmyadmin/config.inc.php
+  copy: src=phpmyadmin.php dest=/etc/phpmyadmin/config.inc.php
   sudo: yes
 
 - name: Ensure phpmyadmin installed
