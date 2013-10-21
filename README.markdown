@@ -4,7 +4,7 @@ Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin.
 
 ## Sample usage
 
-Have a `providers/project.yaml` file in your Vagrant directory with the following contents:
+Have a `provisioning/project.yaml` file in your Vagrant directory with the following contents:
 
     ---
     - hosts: all
