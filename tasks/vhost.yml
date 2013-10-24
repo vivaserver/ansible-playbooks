@@ -1,0 +1,11 @@
+---
+# just make sure to change the "site" file name to the actual vhost's
+
+- name: ensure site VirtualHost available
+  copy: src=site.vhost dest=/etc/apache2/sites-available/site
+  sudo: yes
+
+- name: ensure site VirtualHost setup
+  command: a2ensite site creates=/etc/apache2/sites-enabled/site
+  notify: restart apache2
+  sudo: yes
