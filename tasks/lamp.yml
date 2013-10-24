@@ -17,6 +17,10 @@
   copy: src=lamp.html dest=/var/www/index.html
   sudo: yes
 
+- name: Ensure nice default favicon
+  copy: src=favicon.ico dest=/var/www
+  sudo: yes
+
 - name: ensure no fully qualified domain name error
   lineinfile: dest=/etc/apache2/httpd.conf regexp='' insertafter=EOF line='ServerName localhost' state=present
   notify: restart apache2

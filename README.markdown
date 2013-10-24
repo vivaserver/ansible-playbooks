@@ -11,9 +11,9 @@ Have a `provisioning/project.yaml` file in your Vagrant directory with the follo
       handlers:
       - include: handlers/lamp.yml
       tasks:
+      - include: tasks/dotfiles.yml
       - include: tasks/lamp.yml
       - include: tasks/phpmyadmin.yml
-      - include: tasks/dotfiles.yml
 
 Now include it in your `Vagrantfile` as a provider:
 
