@@ -21,6 +21,11 @@
   copy: src=favicon.ico dest=/var/www
   sudo: yes
 
+- name: ensure inclusion of virtual host configurations
+  lineinfile: dest=/etc/apache2/apache2.conf regexp='' insertafter=EOF line='Include sites-enabled/' state=present
+  notify: restart apache2
+  sudo: yes
+
 - name: ensure no fully qualified domain name error
   lineinfile: dest=/etc/apache2/httpd.conf regexp='' insertafter=EOF line='ServerName localhost' state=present
   notify: restart apache2
