@@ -12,7 +12,7 @@
   copy: src=phpmyadmin.php dest=/etc/phpmyadmin/config.inc.php
   sudo: yes
 
-- name: Ensure phpmyadmin installed
-  lineinfile: dest=/etc/apache2/apache2.conf regexp='' insertafter=EOF line='Include /etc/phpmyadmin/apache.conf' state=present
+- name: ensure phpmyadmin installed
+  command: ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf creates=/etc/apache2/conf.d/phpmyadmin.conf
   notify: restart apache2
   sudo: yes
