@@ -1,0 +1,7 @@
+---
+- name: ensure support package available
+  apt: pkg=python-mysqldb state=present
+  sudo: yes
+
+- name: ensure database created
+  mysql_db: name={{ db_name }}
