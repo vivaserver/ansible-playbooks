@@ -1,6 +1,6 @@
 ---
 - name: Ensure packages available
-  apt: pkg={{ item }} state=present
+  apt: pkg={{ item }} state=present install_recommends=no
   with_items:
     - libapache2-mod-php5
     - mysql-server

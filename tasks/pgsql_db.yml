@@ -1,0 +1,7 @@
+---
+- name: ensure support package available
+  apt: pkg=python-psycopg2 state=present
+  sudo: yes
+
+- name: ensure database created
+  postgresql_db: name={{ db_name }}
