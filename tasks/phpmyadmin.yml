@@ -1,7 +1,7 @@
 # default MySQL user=root, password=''
 ---
 - name: Ensure phpmyadmin available
-  apt: pkg=phpmyadmin state=present
+  apt: pkg=phpmyadmin state=present install_recommends=no
   sudo: yes
 
 - name: Ensure phpmyadmin setup
