@@ -1,0 +1,7 @@
+---
+# ref. http://www.ubuntuupdates.org/ppa/brightbox_ruby_ng_experimental?dist=precise
+- name: ensure Ruby NG repo available
+  apt_repository: repo='ppa:brightbox/ruby-ng-experimental'
+
+- name: ensure Ruby 1.9.3-p448 package available
+  apt: pkg=ruby1.9.1 state=present install_recommends=no
