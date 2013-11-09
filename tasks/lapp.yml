@@ -8,8 +8,8 @@
     - php5-curl
   sudo: yes
 
-- name: Ensure LA(M)P is running
-  service: name=mysql state=started
+- name: Ensure LA(P)P is running
+  service: name=postgresql state=started
   sudo: yes
 
 - name: Ensure nice default HTTP index
