@@ -1,10 +1,11 @@
 ---
 - name: Ensure packages available
-  apt: pkg=$item state=present
+  apt: pkg=$item state=latest
   with_items:
     - curl
     - git
     - mc
+    - ranger
     - rsync
     - vim
     - wget
