@@ -9,7 +9,7 @@
   sudo: yes
 
 - name: ensure Ruby 1.9.3 package available
-  apt: pkg={{ item }} update_cache=yes
+  apt: pkg={{ item }} update_cache=yes state=latest
   with_items:
     - ruby1.9.3
     - ruby-switch

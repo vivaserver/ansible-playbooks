@@ -1,0 +1,23 @@
+- name: ensure partners repo available
+  apt_repository: repo='deb http://archive.canonical.com/ubuntu precise partner' state=present
+  sudo: yes
+
+- name: ensure desktop packages
+  apt: pkg={{ item }} update_cache=yes state=latest
+  with_items:
+    - firefox
+    - fonts-ubuntu-font-family-console
+    - lame
+    - libdvdread4
+    - mplayer
+    - remmina
+    - skype
+    # manually accept eula
+    # - ttf-mscorefonts-installer
+    - ttf-ubuntu-font-family
+    - transmission-gtk
+    - ubuntu-restricted-extras
+    - unrar
+    - vlc
+    - youtube-dl
+  sudo: yes
