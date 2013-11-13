@@ -2,25 +2,12 @@
 
 Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin.
 
-## Sample usage
+## Warning
 
-Have a `provisioning/project.yaml` file in your Vagrant directory with the following contents:
+Some packages require user interaction to confirm EULAs. So, must be installed manually:
 
-    ---
-    - hosts: all
-      handlers:
-      - include: handlers/lamp.yml
-      tasks:
-      - include: tasks/dotfiles.yml
-      - include: tasks/lamp.yml
-      - include: tasks/phpmyadmin.yml
-
-Now include it in your `Vagrantfile` as a provider:
-
-    config.vm.provision :ansible do |ansible|
-      ansible.playbook = "provisioning/project.yml"
-      ansible.verbose = 'vv'
-    end
+- oracle-java7-installer
+- ttf-mscorefonts-installer
 
 ## References
 
