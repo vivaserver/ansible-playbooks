@@ -4,8 +4,6 @@
   with_items:
     - curl
     - git
-    - mc
-    - ranger
     - rsync
     - vim
     - wget

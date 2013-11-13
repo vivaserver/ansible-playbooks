@@ -1,0 +1,24 @@
+- name: ensure Java build repos
+  apt_repository: repo='ppa:webupd8team/java'
+  sudo: yes
+- name: ensure Node build repos
+  apt_repository: repo='ppa:chris-lea/node.js'
+  sudo: yes
+
+- name: ensure build packages installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - build-essential
+    - nodejs
+    - libcurl4-openssl-dev
+    - libncursesw5-dev
+    - libpq-dev
+    - libreadline6-dev 
+    - libxml2 
+    - libxml2-dev 
+    - libxslt1-dev
+    - libssl-dev
+    - lxc
+    # manually accept eula
+    # - oracle-java7-installer
+  sudo: yes
