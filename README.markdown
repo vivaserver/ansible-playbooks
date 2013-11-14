@@ -2,7 +2,7 @@
 
 Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin. Laptop provisioning tested on ElementaryOS 0.2 "Luna".
 
-## Sample: provision an ElementaryOS development laptop
+## Provision an ElementaryOS development laptop
 
     # 1. add "localhost" to /etc/ansible/hosts
     # 2. install "ssh" package
