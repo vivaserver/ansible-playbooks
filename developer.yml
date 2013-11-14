@@ -1,0 +1,22 @@
+# Provision an ElementaryOS development laptop
+#
+# 1. add "localhost" to /etc/ansible/hosts
+# 2. install "ssh" package
+# 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml
+
+---
+- hosts: localhost
+  tasks:
+    - include: ~/devel/playbooks/tasks/build.yml    
+    - include: ~/devel/playbooks/tasks/desktop.yml
+    - include: ~/devel/playbooks/tasks/dotfiles.yml
+    - include: ~/devel/playbooks/tasks/ruby.yml
+    - include: ~/devel/playbooks/tasks/elementaryos.yml    
+
+    - name: ensure console packages installed
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - mc
+        - ranger
+        - tmux
+        - xclip
