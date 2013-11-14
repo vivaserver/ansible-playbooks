@@ -5,7 +5,10 @@
 - name: ensure Google repo key available
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
   sudo: yes
-- name: ensure Google repo available
+- name: ensure Google Chrome repo available
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present
+  sudo: yes
+- name: ensure Google Talk repo available
   apt_repository: repo='deb http://dl.google.com/linux/talkplugin/deb/ stable main' state=present
   sudo: yes
 
@@ -14,6 +17,7 @@
   with_items:
     - firefox
     - fonts-ubuntu-font-family-console
+    - google-chrome-stable
     - google-talkplugin
     - lame
     - libdvdread4
