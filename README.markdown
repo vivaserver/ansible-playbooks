@@ -1,8 +1,30 @@
 # Homegrown Ansible playbooks for fun and profit
 
-Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin.
+Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin. Laptop provisioning tested on ElementaryOS 0.2 "Luna".
 
-## Warning
+## Sample: provision an ElementaryOS development desktop/laptop
+
+    # 1. add "localhost" to /etc/ansible/hosts
+    # 2. install "ssh" package
+    # 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml
+    ---
+    - hosts: localhost
+      tasks:
+        - include: ~/ansible-playbooks/tasks/build.yml    
+        - include: ~/ansible-playbooks/tasks/desktop.yml
+        - include: ~/ansible-playbooks/tasks/dotfiles.yml
+        - include: ~/ansible-playbooks/tasks/ruby.yml
+        - include: ~/ansible-playbooks/tasks/elementaryos.yml    
+
+        - name: ensure console packages installed
+          apt: pkg={{ item }} state=latest
+          with_items:
+            - mc
+            - ranger
+            - tmux
+            - xclip
+
+### Warning
 
 Some packages require user interaction to confirm EULAs. So, must be installed manually:
 
