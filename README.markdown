@@ -1,8 +1,8 @@
-# Homegrown Ansible playbooks for fun and profit
+# Homegrown Ansible playbooks
 
 Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin. Laptop provisioning tested on ElementaryOS 0.2 "Luna".
 
-## Sample: provision an ElementaryOS development desktop/laptop
+## Sample: provision an ElementaryOS development laptop
 
     # 1. add "localhost" to /etc/ansible/hosts
     # 2. install "ssh" package
@@ -40,3 +40,11 @@ Some packages require user interaction to confirm EULAs. So, must be installed m
 [git]: https://github.com/ansible/ansible-examples/tree/master/lamp_simple
 [scl]: http://julien.ponge.org/blog/scalable-and-understandable-provisioning-with-ansible-and-vagrant/
 [gst]: https://gist.github.com/marktheunissen/2979474
+
+## License
+
+Released under the [MIT License](http://www.opensource.org/licenses/MIT).
+
+## Copyright
+
+Copyright (c)2013 [Cristian R. Arroyo](mailto:cristian.arroyo@vivaserver.com)
