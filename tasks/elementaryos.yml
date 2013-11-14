@@ -1,0 +1,21 @@
+- name: ensure updates repo available
+  apt_repository: repo='ppa:versable/elementary-update'
+  sudo: yes
+
+- name: ensure tweaks packages
+  apt: pkg={{ item }} update_cache=yes state=latest
+  with_items:
+    - audience
+    - elementary-elfaenza-icons
+    - elementary-tweaks
+    - etube
+    - foto
+    - wingpanel-slim
+  sudo: yes
+
+- name: ensure cruft removed
+  apt: pkg={{ item }} state=absent purge=yes
+  with_items:
+    - empahty
+    - indicator-messages
+  sudo: yes
