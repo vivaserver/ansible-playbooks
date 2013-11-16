@@ -3,7 +3,7 @@
   apt: pkg={{ item }} state=present install_recommends=no
   with_items:
     - libapache2-mod-php5
-    - postgresql-9.1
+    - postgresql
     - php5-cli
     - php5-curl
     - php5-gd
