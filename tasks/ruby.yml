@@ -15,3 +15,7 @@
     - ruby-switch
     - rubygems
   sudo: yes
+
+- name: ensure Bundler available
+  gem: name=bundler user_install=no state=latest
+  sudo: yes
