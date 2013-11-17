@@ -7,6 +7,9 @@
 ---
 - hosts: localhost
   tasks:
+    - name: ensure PPA repos addition supported
+      apt: pkg=python-curl state=present
+
     - include: ~/devel/playbooks/tasks/build.yml    
     - include: ~/devel/playbooks/tasks/desktop.yml
     - include: ~/devel/playbooks/tasks/dotfiles.yml
