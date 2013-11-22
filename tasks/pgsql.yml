@@ -1,0 +1,8 @@
+---
+- name: Ensure packages available
+  apt: pkg={{ item }} state=present install_recommends=no
+  with_items:
+    - python-psycopg2
+    - postgresql
+  sudo: yes
+
