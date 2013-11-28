@@ -6,3 +6,4 @@
     - tmux
     - xclip
     - weechat
+  sudo: yes
