@@ -19,6 +19,7 @@
     - libxslt1-dev
     - libssl-dev
     - lxc
+    - redir
     # manually accept eula
     # - oracle-java7-installer
   sudo: yes
