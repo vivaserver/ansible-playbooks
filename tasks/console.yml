@@ -1,5 +1,5 @@
 - name: ensure console packages installed
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ item }} state=latest install_recommends=no
   with_items:
     - mc
     - ranger

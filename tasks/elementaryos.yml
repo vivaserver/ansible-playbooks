@@ -17,5 +17,6 @@
   apt: pkg={{ item }} state=absent purge=yes
   with_items:
     - empathy
+    - empathy-common
     - indicator-messages
   sudo: yes
