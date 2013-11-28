@@ -1,0 +1,8 @@
+- name: ensure console packages installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mc
+    - ranger
+    - tmux
+    - xclip
+    - weechat

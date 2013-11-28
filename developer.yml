@@ -11,16 +11,8 @@
       apt: pkg=python-pycurl state=present
 
     - include: ~/devel/playbooks/tasks/build.yml    
+    - include: ~/devel/playbooks/tasks/console.yml    
     - include: ~/devel/playbooks/tasks/desktop.yml
     - include: ~/devel/playbooks/tasks/dotfiles.yml
-    - include: ~/devel/playbooks/tasks/ruby.yml
     - include: ~/devel/playbooks/tasks/elementaryos.yml    
-
-    - name: ensure console packages installed
-      apt: pkg={{ item }} state=latest
-      with_items:
-        - mc
-        - ranger
-        - tmux
-        - xclip
-        - weechat
+    - include: ~/devel/playbooks/tasks/ruby.yml
