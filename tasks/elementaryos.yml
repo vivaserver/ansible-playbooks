@@ -16,6 +16,6 @@
 - name: ensure cruft removed
   apt: pkg={{ item }} state=absent purge=yes
   with_items:
-    - empahty
+    - empathy
     - indicator-messages
   sudo: yes
