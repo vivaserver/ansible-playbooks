@@ -1,0 +1,11 @@
+- name: ensure repo available
+  apt_repository: repo='deb http://toolbelt.herokuapp.com/ubuntu ./'
+  sudo: yes
+
+- name: ensure repo key installed
+  apt_key: url=http://toolbelt.herokuapp.com/apt/release.key state=present
+  sudo: yes
+
+- name: ensure toolbet package available
+  apt: pkg=heroku-toolbelt update_cache=yes state=latest
+  sudo: yes
