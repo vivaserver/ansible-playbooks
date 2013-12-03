@@ -11,6 +11,7 @@
   apt: pkg={{ item }} update_cache=yes state=latest
   with_items:
     - i3
+    - feh
     - lxterminal
     - xfonts-terminus
   sudo: yes
