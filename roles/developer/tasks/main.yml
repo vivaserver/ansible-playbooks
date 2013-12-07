@@ -1,0 +1,8 @@
+---
+- include: build.yml    
+- include: console.yml    
+- include: desktop.yml
+- include: dotfiles.yml
+- include: elementaryos.yml    
+- include: heroku.yml
+- include: i3wm.yml
