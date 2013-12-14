@@ -6,6 +6,7 @@
   apt: pkg={{ item }} update_cache=yes state=latest
   with_items:
     - audience
+    - elementary-thirdparty-icons
     - elementary-elfaenza-icons
     - elementary-tweaks
     - etube
