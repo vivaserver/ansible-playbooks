@@ -8,6 +8,7 @@
     - chromium-browser
     - chromium-codecs-ffmpeg
     - firefox
+    - flashplugin-installer
     - fonts-ubuntu-font-family-console
     - lame
     - libdvdread4
