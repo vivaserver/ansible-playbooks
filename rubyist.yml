@@ -1,0 +1,12 @@
+# Provision an ElementaryOS development laptop
+#
+# 1. add "localhost" to /etc/ansible/hosts
+# 2. install "ssh" package
+# 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass rubyist.yml
+---
+- hosts: localhost
+  tasks:
+    - name: ensure PPA repos addition supported
+      apt: pkg=python-pycurl state=present
+  roles:
+    - rubyist

@@ -4,7 +4,7 @@
   apt: pkg=ruby1.9.1 state=absent
   sudo: yes
 
-- name: ensure Ruby NG repo available
+- name: ensure experimental Ruby NG repo unavailable
   apt_repository: repo='ppa:brightbox/ruby-ng-experimental' state=absent
   sudo: yes
 
