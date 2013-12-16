@@ -16,6 +16,7 @@
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
   with_items:
     - ruby1.9.3
+    - ruby1.9.1-dev
     - rubygems
     - ruby-switch
   sudo: yes
