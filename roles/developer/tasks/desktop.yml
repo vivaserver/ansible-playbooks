@@ -7,10 +7,12 @@
   with_items:
     - chromium-browser
     - chromium-codecs-ffmpeg
+    - ffmpeg
     - firefox
     - flashplugin-installer
     - fonts-ubuntu-font-family-console
     - lame
+    - libavcodec-extra-53
     - libdvdread4
     - mplayer
     - remmina
