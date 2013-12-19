@@ -2,6 +2,7 @@
 - include: build.yml    
 - include: console.yml    
 - include: desktop.yml
-- include: dotfiles.yml
+- include: ../../../tasks/dotfiles.yml    
 - include: elementaryos.yml    
 - include: i3wm.yml
+- include: vim_vundle.yml
