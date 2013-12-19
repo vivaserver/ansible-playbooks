@@ -10,3 +10,4 @@
       apt: pkg=python-pycurl state=present
   roles:
     - developer
+    - rubyist
