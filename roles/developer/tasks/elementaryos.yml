@@ -11,6 +11,7 @@
     - elementary-tweaks
     - etube
     - foto
+    - indicator-synapse
     - wingpanel-slim
   sudo: yes
 
