@@ -3,6 +3,7 @@
   with_items:
     - mc
     - ranger
+    - tig
     - tmux
     - xclip
     - weechat
