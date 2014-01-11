@@ -1,0 +1,7 @@
+- name: ensure Redis repos
+  apt_repository: repo='ppa:chris-lea/redis-server'
+  sudo: yes
+
+- name: ensure package installed
+  apt: pkg=redis state=latest
+  sudo: yes
