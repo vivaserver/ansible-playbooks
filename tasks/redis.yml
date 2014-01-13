@@ -3,5 +3,5 @@
   sudo: yes
 
 - name: ensure package installed
-  apt: pkg=redis state=latest
+  apt: pkg=redis-server state=latest
   sudo: yes
