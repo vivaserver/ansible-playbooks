@@ -12,6 +12,17 @@
     - php5-mysql
   sudo: yes
 
+# before 12.10 Quantal, PHP FPM is set to listen on TCP port 9000 on address 127.0.0.1
+# Look for the line listen = 127.0.0.1:9000 and change it to something like listen = /var/run/php5-fpm.sock
+# ref. http://askubuntu.com/questions/114076/ubuntu-php5-fpm-unix-socket/114086#114086
+- name: ensure php5-fpm socket
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^listen =" line="listen = /var/run/php5-fpm.sock"
+  sudo: yes
+
+- name: ensure php5-fpm socket restarted
+  service: name=php5-fpm state=restarted
+  sudo: yes
+
 - name: Ensure L(E)MP is running
   service: name=nginx state=started
   sudo: yes
