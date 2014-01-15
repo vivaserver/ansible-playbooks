@@ -1,0 +1,7 @@
+- name: ensure Ruby NG repo available
+  apt_repository: repo='ppa:brightbox/ruby-ng'
+  sudo: yes
+
+- name: ensure new Nginx package
+  apt: pkg=nginx-full state=latest install_recommends=no
+  sudo: yes

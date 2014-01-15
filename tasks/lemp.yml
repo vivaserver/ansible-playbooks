@@ -1,0 +1,21 @@
+---
+- include: nginx.yml
+
+- name: Ensure packages available
+  apt: pkg={{ item }} state=latest install_recommends=no
+  with_items:
+    - mysql-server
+    - php5-cli
+    - php5-curl
+    - php5-fpm
+    - php5-gd
+    - php5-mysql
+  sudo: yes
+
+- name: Ensure L(E)MP is running
+  service: name=nginx state=started
+  sudo: yes
+
+- name: Ensure LE(M)P is running
+  service: name=mysql state=started
+  sudo: yes
