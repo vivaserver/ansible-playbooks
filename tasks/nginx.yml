@@ -2,6 +2,7 @@
   apt_repository: repo='ppa:brightbox/ruby-ng'
   sudo: yes
 
+# NOTE: depends on passenger-common, which by default installs passenger-common1.8 which installs ruby1.8
 - name: ensure new Nginx package
   apt: pkg=nginx-full state=latest install_recommends=no
   sudo: yes
