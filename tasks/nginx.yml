@@ -6,3 +6,7 @@
 - name: ensure new Nginx package
   apt: pkg=nginx-full state=latest install_recommends=no
   sudo: yes
+
+- name: Ensure nice default HTTP index
+  copy: src=www.html dest=/usr/share/nginx/html/index.html
+  sudo: yes
