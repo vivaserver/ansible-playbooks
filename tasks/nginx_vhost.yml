@@ -1,0 +1,13 @@
+---
+# NOTE: nginx-vhost.j2 is for a CodeIgniter site
+- name: ensure site VirtualHost available
+  template: src=nginx_vhost.j2 dest=/etc/nginx/sites-available/{{ vhost_name }} mode=0644
+  sudo: yes
+
+- name: ensure site VirtualHost enabled
+  file: src=/etc/nginx/sites-available/{{ vhost_name }} dest=/etc/nginx/sites-enabled/{{ vhost_name }} state=link
+  sudo: yes
+
+- name: ensure nginx restarted
+  service: name=nginx state=restarted
+  sudo: yes
