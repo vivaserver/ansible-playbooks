@@ -16,6 +16,8 @@
     - libdvdread4
     - mplayer
     - remmina
+    - remmina-plugin-rdp
+    - remmina-plugin-vnc
     - skype
     - ttf-ubuntu-font-family
     - transmission-gtk
