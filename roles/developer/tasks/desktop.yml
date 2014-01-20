@@ -11,6 +11,7 @@
     - firefox
     - flashplugin-installer
     - fonts-ubuntu-font-family-console
+    - freerdp-x11
     - lame
     - libavcodec-extra-53
     - libdvdread4
