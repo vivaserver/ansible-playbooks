@@ -1,16 +1,27 @@
 ---
 # ref. http://wiki.brightbox.co.uk/docs:ruby-ng
+#
+# run only this task using tags!
+#
+#   $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml --tag ruby
+#
 - name: ensure old Ruby 1.9.3 package removed
   apt: pkg=ruby1.9.1 state=absent
   sudo: yes
+  tags: 
+    - ruby
 
 - name: ensure experimental Ruby NG repo unavailable
   apt_repository: repo='ppa:brightbox/ruby-ng-experimental' state=absent
   sudo: yes
+  tags: 
+    - ruby
 
 - name: ensure Ruby NG repo available
   apt_repository: repo='ppa:brightbox/ruby-ng'
   sudo: yes
+  tags: 
+    - ruby
 
 - name: ensure Ruby 1.9.3 package available
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
@@ -20,7 +31,11 @@
     - rubygems
     - ruby-switch
   sudo: yes
+  tags: 
+    - ruby
 
 - name: ensure Bundler available
   gem: name=bundler user_install=no state=latest
   sudo: yes
+  tags: 
+    - ruby
