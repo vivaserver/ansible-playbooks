@@ -8,11 +8,11 @@
     AllowOverride All
   </Directory>
 
-  ErrorLog /var/log/apache2/{{ vhost_log_error }}
+  ErrorLog /var/log/apache2/{{ vhost_name }}.error.log
 
   # Possible values include: debug, info, notice, warn, error, crit,
   # alert, emerg.
   LogLevel warn
 
-  CustomLog /var/log/apache2/{{ vhost_log_file }} combined
+  CustomLog /var/log/apache2/{{ vhost_name }}.access.log combined
 </VirtualHost>
