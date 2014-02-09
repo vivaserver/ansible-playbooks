@@ -11,9 +11,16 @@
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
 
+# Add the www to the url with nginx redirect
+# ref. http://stackoverflow.com/a/7958540
+server {
+  server_name {{ vhost_site }};
+  rewrite ^(.*) http://www.{{ vhost_site }}$1 permanent;
+}
+
 server {
   listen 80;
-  server_name {{ vhost_site }};
+  server_name www.{{ vhost_site }};
   root {{ vhost_root }};
 
   index index.html index.php;
