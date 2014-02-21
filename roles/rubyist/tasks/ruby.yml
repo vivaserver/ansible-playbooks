@@ -5,17 +5,19 @@
 #
 #   $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml --tag ruby
 #
-- name: ensure old Ruby 1.9.3 package removed
-  apt: pkg=ruby1.9.1 state=absent
-  sudo: yes
-  tags: 
-    - ruby
 
-- name: ensure experimental Ruby NG repo unavailable
-  apt_repository: repo='ppa:brightbox/ruby-ng-experimental' state=absent
-  sudo: yes
-  tags: 
-    - ruby
+# for when we confused 'ppa:brightbox/ruby-ng-experimental' for 'ppa:brightbox/ruby-ng':
+#
+# - name: ensure old Ruby 1.9.3 package removed
+#   apt: pkg=ruby1.9.1 state=absent
+#   sudo: yes
+#   tags: 
+#     - ruby
+# - name: ensure experimental Ruby NG repo unavailable
+#   apt_repository: repo='ppa:brightbox/ruby-ng-experimental' state=absent
+#   sudo: yes
+#   tags: 
+#     - ruby
 
 - name: ensure Ruby NG repo available
   apt_repository: repo='ppa:brightbox/ruby-ng'
