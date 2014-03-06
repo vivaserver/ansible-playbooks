@@ -1,0 +1,29 @@
+# run only this task using tags!
+#
+#   $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml --tag composer
+#
+# ref. https://getcomposer.org/doc/00-intro.md#globally
+---
+- name: ensure PHP5 available
+  apt: pkg=php5-cli state=present install_recommends=no
+  sudo: yes
+  tags:
+    - composer
+
+- name: ensure Composer package manager
+  shell: curl -sS https://getcomposer.org/installer | /usr/bin/php5
+  sudo: yes
+  tags:
+    - composer
+
+- name: ensure Composer package manager
+  command: chmod 755 composer.phar
+  sudo: yes
+  tags:
+    - composer
+
+- name: ensure Composer package manager
+  command: mv composer.phar /usr/local/bin/composer
+  sudo: yes
+  tags:
+    - composer
