@@ -1,6 +1,18 @@
+# run only this task using tags!
+#
+#   $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml --tag eos
+
 - name: ensure updates repo available
   apt_repository: repo='ppa:versable/elementary-update'
   sudo: yes
+  tags:
+    - eos
+
+- name: ensure icons repo available
+  apt_repository: repo='ppa:elementary-br/projects'
+  sudo: yes
+  tags:
+    - eos
 
 - name: ensure tweaks packages
   apt: pkg={{ item }} update_cache=yes state=latest
@@ -11,9 +23,23 @@
     - elementary-tweaks
     - etube
     - foto
+    - ieos7-icons
     - indicator-synapse
     - wingpanel-slim
   sudo: yes
+  tags:
+    - eos
+
+- name: ensure ieos7-icons for places/folders; elFaenza uses eOS's
+  command: rm -rf /usr/share/icons/elFaenza/places
+  sudo: yes
+  tags:
+    - eos
+- name: ensure ieos7-icons for places/folders; elFaenza uses eOS's
+  command: ln -s /usr/share/icons/Ieos7/places /usr/share/icons/elFaenza/places
+  sudo: yes
+  tags:
+    - eos
 
 - name: ensure cruft removed
   apt: pkg={{ item }} state=absent purge=yes
@@ -22,3 +48,5 @@
     - empathy-common
     - indicator-messages
   sudo: yes
+  tags:
+    - eos
