@@ -30,14 +30,24 @@
   tags:
     - eos
 
-- name: ensure ieos7-icons for places/folders; elFaenza uses eOS's
+- name: ensure ieos7-icons for places/folders; as elFaenza uses eOS stock icons
   command: rm -rf /usr/share/icons/elFaenza/places
   sudo: yes
   tags:
     - eos
-- name: ensure ieos7-icons for places/folders; elFaenza uses eOS's
+- name: ensure ieos7-icons for places/folders; as elFaenza uses eOS stock icons
   command: ln -s /usr/share/icons/Ieos7/places /usr/share/icons/elFaenza/places
   sudo: yes
+  tags:
+    - eos
+
+# finish theme installation in the Appearance settings:
+#   * Window Decoration Theme: MoonLion
+#   * Interface Theme: MoonLion
+#   * Icon Theme: elFaenza
+
+- name: clone MoonLion theme
+  git: repo=https://github.com/vivaserver/MoonLion dest=~/.themes/MoonLion
   tags:
     - eos
 
