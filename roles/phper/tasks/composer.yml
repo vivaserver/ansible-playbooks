@@ -3,9 +3,13 @@
 #   $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml --tag composer
 #
 # ref. https://getcomposer.org/doc/00-intro.md#globally
+
 ---
 - name: ensure PHP5 available
-  apt: pkg=php5-cli state=present install_recommends=no
+  apt: pkg={{ item }} state=present install_recommends=no
+  with_items:
+    - php5-cli
+    - php5-curl
   sudo: yes
   tags:
     - composer
