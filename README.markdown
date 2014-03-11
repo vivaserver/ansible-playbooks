@@ -1,8 +1,11 @@
 # Homegrown Ansible playbooks
 
-Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin. Laptop provisioning tested on ElementaryOS 0.2 "Luna".
+Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin.
+Laptop provisioning tested on ElementaryOS 0.2 "Luna".
 
-## Provision an ElementaryOS development laptop
+## Provision an elementaryOS development laptop
+
+Just execute the developer role against a local elementaryOS host:
 
     # 1. add "localhost" to /etc/ansible/hosts
     # 2. install "ssh" package
@@ -10,19 +13,10 @@ Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin. Laptop provis
     ---
     - hosts: localhost
       tasks:
-        - include: ~/ansible-playbooks/tasks/build.yml    
-        - include: ~/ansible-playbooks/tasks/desktop.yml
-        - include: ~/ansible-playbooks/tasks/dotfiles.yml
-        - include: ~/ansible-playbooks/tasks/ruby.yml
-        - include: ~/ansible-playbooks/tasks/elementaryos.yml    
-
-        - name: ensure console packages installed
-          apt: pkg={{ item }} state=latest
-          with_items:
-            - mc
-            - ranger
-            - tmux
-            - xclip
+        - name: ensure PPA repos addition supported
+          apt: pkg=python-pycurl state=present
+      roles:
+        - developer
 
 ### Warning
 
@@ -47,4 +41,4 @@ Released under the [MIT License](http://www.opensource.org/licenses/MIT).
 
 ## Copyright
 
-Copyright (c)2013 [Cristian R. Arroyo](mailto:cristian.arroyo@vivaserver.com)
+Copyright (c)2014 [Cristian R. Arroyo](mailto:cristian.arroyo@vivaserver.com)
