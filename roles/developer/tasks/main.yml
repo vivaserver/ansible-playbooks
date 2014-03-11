@@ -1,7 +1,6 @@
 ---
 - include: ../../../tasks/build.yml    
 - include: console.yml    
-- include: composer.yml    
 - include: desktop.yml
 - include: ../../../tasks/dotfiles.yml    
 - include: elementaryos.yml    
