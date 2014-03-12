@@ -1,0 +1,10 @@
+- name: ensure repo available
+  apt_repository: repo='ppa:linrunner/tlp'
+  sudo: yes
+  tags: 
+    - tlp
+- name: ensure package available
+  apt: pkg=tlp update_cache=yes state=latest install_recommends=no
+  sudo: yes
+  tags: 
+    - tlp
