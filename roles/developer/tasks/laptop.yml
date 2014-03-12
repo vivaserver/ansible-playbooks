@@ -4,7 +4,7 @@
   tags: 
     - tlp
 - name: ensure package available
-  apt: pkg=tlp update_cache=yes state=latest install_recommends=no
+  apt: pkg=tlp state=latest install_recommends=yes
   sudo: yes
   tags: 
     - tlp
