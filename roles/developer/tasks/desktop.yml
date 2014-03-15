@@ -28,4 +28,6 @@
     - youtube-dl
     # manually accept eula
     # - ttf-mscorefonts-installer
+    # install the Vista fonts
+    # http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer
   sudo: yes
