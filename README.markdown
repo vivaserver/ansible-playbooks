@@ -25,6 +25,16 @@ Some packages require user interaction to confirm EULAs. So, must be installed m
 - oracle-java7-installer
 - ttf-mscorefonts-installer
 
+## Extracted roles to Ansible Galaxy
+
+- [ansible-lamp][glamp]
+- [ansible-ioncube][glion]
+- [ansible-plowshare][glplw]
+
+[glamp]: https://github.com/vivaserver/ansible-lamp
+[glion]: https://github.com/vivaserver/ansible-ioncube
+[glplw]: https://github.com/vivaserver/ansible-plowshare
+
 ## References
 
 * [Insanely complete Ansible playbook, showing off all the options][gst]
