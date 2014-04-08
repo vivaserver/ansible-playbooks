@@ -5,5 +5,8 @@
 
 - name: ensure site VirtualHost setup
   command: a2ensite {{ vhost_name }} creates=/etc/apache2/sites-enabled/{{ vhost_name }}
-  notify: restart apache2
+  sudo: yes
+
+- name: ensure site VirtualHost reloaded
+  service: name=apache2 state=restarted
   sudo: yes
