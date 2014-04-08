@@ -14,5 +14,8 @@
 
 - name: ensure phpmyadmin installed
   command: ln -s /etc/phpmyadmin/apache.conf /etc/apache2/conf.d/phpmyadmin.conf creates=/etc/apache2/conf.d/phpmyadmin.conf
-  notify: restart apache2
+  sudo: yes
+
+- name: ensure phpmyadmin site reloaded
+  service: name=apache2 state=restarted
   sudo: yes
