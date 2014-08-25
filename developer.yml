@@ -8,7 +8,7 @@
   tasks:
     - name: ensure PPA repos addition supported
       apt: pkg=python-pycurl state=present
-    # - include: roles/developer/tasks/dropbox.yml
+    # - include: tasks/dropbox.yml
   roles:
     - developer
     - rubyist
