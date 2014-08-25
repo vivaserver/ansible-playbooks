@@ -6,6 +6,8 @@
 - name: ensure BitTorrent Sync package
   apt: pkg={{ item }} state=latest
   with_items:
-    - btsync
-    # - btsync-gui
+    # for servers:
+    # - btsync
+    # for desktops:
+    - btsync-gui
   sudo: yes
