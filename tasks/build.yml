@@ -1,6 +1,3 @@
-- name: ensure Java build repos
-  apt_repository: repo='ppa:webupd8team/java'
-  sudo: yes
 - name: ensure Node build repos
   apt_repository: repo='ppa:chris-lea/node.js'
   sudo: yes
@@ -20,6 +17,4 @@
     - libssl-dev
     - lxc
     - redir
-    # manually accept eula
-    # - oracle-java7-installer
   sudo: yes

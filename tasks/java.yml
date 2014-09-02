@@ -1,0 +1,10 @@
+- name: ensure Java build repos
+  apt_repository: repo='ppa:webupd8team/java'
+  sudo: yes
+
+- name: ensure Java packages installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    # manually accept eula
+    # - oracle-java7-installer
+  sudo: yes
