@@ -1,0 +1,9 @@
+- name: ensure Node build repos
+  apt_repository: repo='ppa:chris-lea/node.js'
+  sudo: yes
+
+- name: ensure Node packages installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - nodejs
+  sudo: yes

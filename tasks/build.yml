@@ -1,12 +1,7 @@
-- name: ensure Node build repos
-  apt_repository: repo='ppa:chris-lea/node.js'
-  sudo: yes
-
 - name: ensure build packages installed
   apt: pkg={{ item }} state=latest
   with_items:
     - build-essential
-    - nodejs
     - libcurl4-openssl-dev
     - libncursesw5-dev
     - libpq-dev
