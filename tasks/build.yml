@@ -10,6 +10,6 @@
     - libxml2-dev 
     - libxslt1-dev
     - libssl-dev
-    - lxc
-    - redir
+    # - lxc
+    # - redir
   sudo: yes
