@@ -2,3 +2,5 @@
 # first execute tasks/pgsql.yml
 - name: ensure database created
   postgresql_db: name={{ db_name }}
+  sudo_user: postgres
+  sudo: yes
