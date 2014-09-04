@@ -12,7 +12,7 @@
 - name: Clone dot files
   git: repo=https://github.com/vivaserver/dotfiles dest=~/dotfiles
 - name: Install dot files
-  command: dotfiles/install.sh --force creates=.gitconfig
+  command: ~/dotfiles/install.sh --force creates=.gitconfig
 
 # same as in /etc/environment?
 - name: fix locale
