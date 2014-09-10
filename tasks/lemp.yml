@@ -15,8 +15,20 @@
 # before 12.10 Quantal, PHP FPM is set to listen on TCP port 9000 on address 127.0.0.1
 # Look for the line listen = 127.0.0.1:9000 and change it to something like listen = /var/run/php5-fpm.sock
 # ref. http://askubuntu.com/questions/114076/ubuntu-php5-fpm-unix-socket/114086#114086
-- name: ensure php5-fpm socket
-  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^listen =" line="listen = /var/run/php5-fpm.sock"
+# - name: ensure php5-fpm socket
+#   lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^listen =" line="listen = /var/run/php5-fpm.sock"
+#   sudo: yes
+
+# nginx error connect to php5-fpm.sock failed (13: Permission denied)
+# ref. http://stackoverflow.com/a/23487409
+- name: ensure php5-fpm owner
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^;listen.owner =" line="listen.owner = www-data"
+  sudo: yes
+- name: ensure php5-fpm group
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^;listen.group =" line="listen.group = www-data"
+  sudo: yes
+- name: ensure php5-fpm mode
+  lineinfile: dest=/etc/php5/fpm/pool.d/www.conf regexp="^;listen.mode =" line="listen.mode = 0660"
   sudo: yes
 
 - name: ensure php5-fpm socket restarted
