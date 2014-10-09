@@ -13,5 +13,6 @@
     - i3
     - feh
     - lxterminal
+    - rxvt-unicode-256color
     - xfonts-terminus
   sudo: yes
