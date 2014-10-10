@@ -56,7 +56,6 @@
   with_items:
     - empathy
     - empathy-common
-    - indicator-messages
   sudo: yes
   tags:
     - eos
