@@ -4,7 +4,7 @@
 
 # NOTE: depends on passenger-common, which by default installs passenger-common1.8 which installs ruby1.8
 - name: ensure new Nginx package
-  apt: pkg=nginx-full state=latest install_recommends=no
+  apt: pkg=nginx-full state=latest install_recommends=no force=yes
   sudo: yes
 
 - name: Ensure nice default HTTP index
