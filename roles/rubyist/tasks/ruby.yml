@@ -36,6 +36,15 @@
   when: ansible_distribution == "Ubuntu"
   sudo: yes
   tags: 
+
+- name: ensure Ruby 1.9.3 package available
+  apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
+  with_items:
+    - ruby1.9.3
+    - ruby1.9.1-dev
+  when: ansible_distribution == "Debian"
+  sudo: yes
+  tags: 
     - ruby
 
 - name: ensure Bundler available
