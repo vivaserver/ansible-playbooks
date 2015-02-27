@@ -9,7 +9,7 @@ Just execute the developer role against a local elementaryOS host:
 
     # 1. add "localhost" to /etc/ansible/hosts
     # 2. install "ssh" package
-    # 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml
+    # 3. $ ansible-playbook -vv --ask-sudo-pass developer.yml
     ---
     - hosts: localhost
       tasks:
