@@ -2,13 +2,15 @@
   apt: pkg={{ item }} state=latest install_recommends=no
   with_items:
     - cmatrix
-    - cowsay
+    # - cowsay
     - mc
-    - mp3blaster
+    # - mp3blaster
     - ncdu
     - ranger
     - tig
     - tmux
     - xclip
-    - weechat
+    # - weechat
   sudo: yes
+  tags:
+    - console
