@@ -1,0 +1,24 @@
+- name: ensure Google repo key available
+  apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=36A1D7869245C8950F966E92D8576A8BA88D21E9
+  when: ansible_distribution_release == "freya" or ansible_distribution_release == "trusty"
+  sudo: yes
+  tags:
+    - docker
+
+- name: ensure repo available
+  apt_repository: repo='deb https://get.docker.io/ubuntu docker main' state=present
+  when: ansible_distribution_release == "freya" or ansible_distribution_release == "trusty"
+  sudo: yes
+  tags:
+    - docker
+
+- name: ensure docker-related packages installed
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - lxc-docker
+    # might not be wise to install these on a LXC container itself (Vagrant):
+    - lxc
+    - redir
+  sudo: yes
+  tags:
+    - docker
