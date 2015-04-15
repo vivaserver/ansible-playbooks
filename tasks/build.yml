@@ -10,7 +10,6 @@
     - libxml2-dev 
     - libxslt1-dev
     - libssl-dev
-    # might not be wise to install these on a LXC container itself (Vagrant):
-    # - lxc
-    # - redir
   sudo: yes
+  tags:
+    - build
