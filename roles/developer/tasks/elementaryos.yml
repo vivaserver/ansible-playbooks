@@ -4,12 +4,14 @@
 
 - name: ensure updates repo available
   apt_repository: repo='ppa:versable/elementary-update'
+  when: ansible_distribution_release == 'luna'
   sudo: yes
   tags:
     - eos
 
 - name: ensure icons repo available
   apt_repository: repo='ppa:elementary-br/projects'
+  when: ansible_distribution_release == 'luna'
   sudo: yes
   tags:
     - eos
@@ -26,6 +28,7 @@
     - ieos7-icons
     - indicator-synapse
     - wingpanel-slim
+  when: ansible_distribution_release == 'luna'
   sudo: yes
   tags:
     - eos
@@ -48,6 +51,7 @@
 
 - name: clone MoonLion theme
   git: repo=https://github.com/vivaserver/MoonLion dest=~/.themes/MoonLion
+  when: ansible_distribution_release == 'luna'
   tags:
     - eos
 
@@ -56,6 +60,7 @@
   with_items:
     - empathy
     - empathy-common
+  when: ansible_distribution_release == 'luna'
   sudo: yes
   tags:
     - eos
