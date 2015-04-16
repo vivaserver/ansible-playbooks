@@ -5,7 +5,6 @@
   tags:
     - btsync
 
-
 - name: ensure BitTorrent Sync package
   apt: pkg={{ item }} state=latest
   with_items:
@@ -16,4 +15,3 @@
   sudo: yes
   tags:
     - btsync
-
