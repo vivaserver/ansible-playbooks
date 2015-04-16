@@ -2,6 +2,9 @@
 - name: ensure BitTorrent Sync repo.
   apt_repository: repo='ppa:tuxpoldo/btsync'
   sudo: yes
+  tags:
+    - btsync
+
 
 - name: ensure BitTorrent Sync package
   apt: pkg={{ item }} state=latest
@@ -11,3 +14,6 @@
     # for desktops:
     - btsync-gui
   sudo: yes
+  tags:
+    - btsync
+
