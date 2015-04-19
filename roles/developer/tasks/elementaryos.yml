@@ -2,6 +2,23 @@
 #
 #   $ ansible-playbook -vv -K --sudo developer.yml --tag eos
 
+- name: ensure updates repo available
+  apt_repository: repo='ppa:bmeznarsic/icon-themes'
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+
+- name: ensure tweaks packages
+  apt: pkg={{ item }} update_cache=yes state=latest
+  with_items:
+    - elementary-thirdparty-icons
+    - elementary-elfaenza-icons
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+
 - name: ensure ieos7-icons repo available
   apt_repository: repo='ppa:noobslab/icons'
   sudo: yes
