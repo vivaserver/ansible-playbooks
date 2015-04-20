@@ -1,19 +1,57 @@
 # run only this task using tags!
 #
-#   $ ansible-playbook -vv -K --sudo developer.yml --tag eos
+#   $ ansible-playbook -vv -K --connection=local developer.yml --tag eos
 
-- name: ensure updates repo available
+- name: ensure icons repo available
   apt_repository: repo='ppa:bmeznarsic/icon-themes'
   when: ansible_distribution_release == "freya"
   sudo: yes
   tags:
     - eos
-
-- name: ensure tweaks packages
+- name: ensure icons packages
   apt: pkg={{ item }} update_cache=yes state=latest
   with_items:
-    - elementary-thirdparty-icons
+    # - elementary-thirdparty-icons
     - elementary-elfaenza-icons
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+
+- name: ensure UberWriter repo available
+  apt_repository: repo='ppa:w-vollprecht/ppa'
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+- name: ensure UberWriter available
+  apt: pkg=uberwriter state=latest
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+
+- name: ensure Vocal repo available
+  apt_repository: repo='ppa:nathandyer/vocal-stable'
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+- name: ensure Vocal available
+  apt: pkg=vocal state=latest
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+
+- name: ensure Foto repo available
+  apt_repository: repo='ppa:erasmo-marin/foto-1.0'
+  when: ansible_distribution_release == "freya"
+  sudo: yes
+  tags:
+    - eos
+- name: ensure Foto available
+  apt: pkg=foto state=latest
   when: ansible_distribution_release == "freya"
   sudo: yes
   tags:
