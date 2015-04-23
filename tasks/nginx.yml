@@ -10,3 +10,7 @@
 - name: Ensure nice default HTTP index
   copy: src=www.html dest=/usr/share/nginx/html/index.html
   sudo: yes
+
+- name: ensure Docker compatibility
+  lineinfile: dest=/etc/nginx/nginx.conf line="daemon off;"
+  when: ansible_virtualization_type == "docker"
