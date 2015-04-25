@@ -1,11 +1,15 @@
 - name: ensure Node build repos
   apt_repository: repo='ppa:chris-lea/node.js'
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "elementary os"
   sudo: yes
+  tags:
+    - node
 
 - name: ensure Node packages installed
   apt: pkg={{ item }} state=latest
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "elementary os"
   with_items:
     - nodejs
   sudo: yes
+  tags:
+    - node
