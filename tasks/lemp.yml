@@ -37,6 +37,7 @@
 
 - name: Ensure L(E)MP is running
   service: name=nginx state=started
+  when: ansible_virtualization_type != "docker"
   sudo: yes
 
 - name: Ensure LE(M)P is running
