@@ -2,10 +2,14 @@
 - name: ensure i3 repo available
   apt_repository: repo='deb http://debian.sur5r.net/i3/ precise universe'
   sudo: yes
+  tags:
+    - i3
 
 - name: ensure i3 repo installable from
   command: apt-get --allow-unauthenticated install sur5r-keyring
   sudo: yes
+  tags:
+    - i3
 
 - name: ensure i3 packages available
   apt: pkg={{ item }} update_cache=yes state=latest
@@ -16,3 +20,5 @@
     - rxvt-unicode-256color
     - xfonts-terminus
   sudo: yes
+  tags:
+    - i3
