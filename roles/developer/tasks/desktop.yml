@@ -1,5 +1,6 @@
 - name: ensure partners repo available
   apt_repository: repo='deb http://archive.canonical.com/ubuntu precise partner' state=present
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
   sudo: yes
 
 - name: ensure desktop packages
@@ -30,4 +31,5 @@
     # - ttf-mscorefonts-installer
     # install the Vista fonts
     # http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
   sudo: yes

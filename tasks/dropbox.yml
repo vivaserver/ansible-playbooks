@@ -1,8 +1,10 @@
 ---
 - name: ensure Dropbox repo available
   apt_repository: repo='deb http://linux.dropbox.com/ubuntu precise main'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
   sudo: yes
 
 - name: ensure Dropbox package available
   apt: pkg=dropbox state=latest
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
   sudo: yes
