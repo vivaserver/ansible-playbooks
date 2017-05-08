@@ -7,7 +7,8 @@
     - rsync
     - vim
     - wget
-  sudo: yes
+  remote_user: root
+  become: yes
 
 - name: Clone dot files
   git: repo=https://github.com/vivaserver/dotfiles dest=~/dotfiles
