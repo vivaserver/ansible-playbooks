@@ -15,4 +15,3 @@
   when: ansible_distribution == "Ubuntu"
   with_items:
     - docker-ce
-    - docker-compose
