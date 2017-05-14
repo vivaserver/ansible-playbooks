@@ -16,7 +16,7 @@
   tags:
     - locale
 - name: fix locale
-  command: sudo locale-gen en_US.UTF-8
+  command: locale-gen en_US.UTF-8
   when: ansible_distribution == "Ubuntu"
   tags:
     - locale
