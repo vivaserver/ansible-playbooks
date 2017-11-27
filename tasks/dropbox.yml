@@ -2,9 +2,20 @@
 - name: ensure Dropbox repo available
   apt_repository: repo='deb http://linux.dropbox.com/ubuntu precise main'
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
-  sudo: yes
+  become: yes
+  tags: 
+    - dropbox
+
+- name: ensure Dropbox repo available
+  apt_repository: repo='deb http://linux.dropbox.com/ubuntu xenial main'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'xenial'
+  become: yes
+  tags: 
+    - dropbox
 
 - name: ensure Dropbox package available
   apt: pkg=dropbox state=latest
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
-  sudo: yes
+  when: ansible_distribution == 'Ubuntu'
+  become: yes
+  tags: 
+    - dropbox

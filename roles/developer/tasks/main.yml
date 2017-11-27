@@ -1,9 +1,9 @@
 ---
-- include: ../../../tasks/build.yml    
-- include: console.yml    
+- include: ../../../tasks/build.yml
+- import_tasks: console.yml
 - include: desktop.yml
-- include: ../../../tasks/dotfiles.yml    
-- include: elementaryos.yml    
-- include: laptop.yml
+- include: ../../../tasks/dotfiles.yml
+- include: elementaryos.yml
+- import_tasks: laptop.yml
 - include: i3wm.yml
 - include: vim_vundle.yml

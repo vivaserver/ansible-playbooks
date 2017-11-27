@@ -3,6 +3,7 @@
   with_items:
     - cmatrix
     # - cowsay
+    - git
     - mc
     # - mp3blaster
     - ncdu
@@ -11,6 +12,6 @@
     - tmux
     - xclip
     # - weechat
-  sudo: yes
+  become: yes
   tags:
     - console

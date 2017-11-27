@@ -2,14 +2,16 @@
 #
 # 1. add "localhost" to /etc/ansible/hosts
 # 2. install "ssh" package
-# 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass developer.yml
+# 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass --tags=tlp developer.yml
 ---
 - hosts: localhost
   tasks:
     - name: ensure PPA repos addition supported
       apt: pkg=python-pycurl state=present
-    # - include: tasks/dropbox.yml
+
+    # - import_tasks: tasks/dropbox.yml
+    # - import_tasks: tasks/google.yml
   roles:
     - developer
-    - rubyist
+    # - rubyist
     # - phper

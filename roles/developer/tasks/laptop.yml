@@ -1,10 +1,10 @@
 - name: ensure repo available
   apt_repository: repo='ppa:linrunner/tlp'
-  sudo: yes
+  become: yes
   tags: 
     - tlp
 - name: ensure package available
   apt: pkg=tlp state=latest install_recommends=yes
-  sudo: yes
+  become: yes
   tags: 
     - tlp
