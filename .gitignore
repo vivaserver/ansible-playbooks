@@ -1,2 +1,4 @@
 *.ENV
+*.retry
+*.swp
 .vimrc

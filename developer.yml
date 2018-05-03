@@ -2,7 +2,7 @@
 #
 # 1. add "localhost" to /etc/ansible/hosts
 # 2. install "ssh" package
-# 3. $ ansible-playbook -vv --ask-pass --ask-sudo-pass --tags=tlp developer.yml
+# 3. $ ansible-playbook -vv --ask-sudo-pass --tags=tlp developer.yml
 ---
 - hosts: localhost
   tasks:
