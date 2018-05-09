@@ -20,11 +20,9 @@
     - remmina
     - remmina-plugin-rdp
     - remmina-plugin-vnc
-    - skype
     - ttf-ubuntu-font-family
     - transmission-gtk
     - ubuntu-restricted-extras
-    - unrar
     - vlc
     - youtube-dl
     # manually accept eula
