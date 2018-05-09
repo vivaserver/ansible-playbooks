@@ -1,0 +1,14 @@
+---
+- name: ensure Vim package
+  become: yes
+  apt: pkg={{ item }} state=latest install_recommends=no
+  with_items:
+    - vim
+    - vim-airline
+    - vim-command-t
+  when: ansible_distribution_release == "bionic"
+  tags:
+    - vim
+
+- import_tasks: vim_vundle.yml
+  when: ansible_distribution_release != "bionic"

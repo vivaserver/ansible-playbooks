@@ -6,4 +6,4 @@
 - include: elementaryos.yml
 - import_tasks: laptop.yml
 - include: i3wm.yml
-- include: vim_vundle.yml
+- include: vim.yml
