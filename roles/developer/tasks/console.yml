@@ -10,9 +10,17 @@
     - ranger
     - tig
     - tmux
-    - xclip
     - unrar
     # - weechat
+  become: yes
+  tags:
+    - console
+
+- name: ensure updated console packages installed
+  apt: pkg={{ item }} state=latest install_recommends=no
+  when: ansible_distribution_release == "bionic"
+  with_items:
+    - neofetch
   become: yes
   tags:
     - console
