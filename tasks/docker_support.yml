@@ -1,19 +1,19 @@
 # ensure remote Docker support for Ansible Docker module
 - name: ensure packages
   apt: pkg=python-setuptools state=latest
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_release != "bionic"
 
 - name: ensure python support
   apt: pkg=python-pip
+  become: yes
   when: ansible_distribution == "Ubuntu"
 
 # ref. https://github.com/anarcher/ansible-docker-registry/issues/1
 - name: ensure python support upgraded
   command: easy_install -U pip
   when: ansible_distribution_release == "trusty"
-
 # ref. https://github.com/ansible/ansible/issues/10879#issuecomment-97738264
-- name: ensure python support
+- name: ensure Ansible python support
   pip: name=docker-py version=1.1.0
   when: ansible_distribution_release == "trusty"
 
@@ -23,4 +23,9 @@
 
 - name: ensure compose support
   pip: name=docker-compose
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_release != "bionic"
+
+- name: ensure Ansible python support
+  when: ansible_distribution_release == "bionic"
+  pip: name=docker-py
+  become: yes
