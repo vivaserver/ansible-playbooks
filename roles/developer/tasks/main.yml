@@ -3,7 +3,6 @@
 - import_tasks: console.yml
 - include: desktop.yml
 - include: ../../../tasks/dotfiles.yml
-- include: elementaryos.yml
 - import_tasks: laptop.yml
 - include: i3wm.yml
 - include: vim.yml
