@@ -10,12 +10,12 @@
     - chromium-codecs-ffmpeg
     - ffmpeg
     - firefox
-    - flashplugin-installer
     - fonts-ubuntu-font-family-console
     - freerdp-x11
     - lame
     - libavcodec-extra-53
     - libdvdread4
+    - meld
     - mplayer
     - remmina
     - remmina-plugin-rdp
