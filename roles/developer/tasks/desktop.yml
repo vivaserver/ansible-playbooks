@@ -10,25 +10,31 @@
     - chromium-codecs-ffmpeg
     - ffmpeg
     - firefox
-    - fonts-ubuntu-font-family-console
-    - freerdp-x11
-    - lame
-    - libavcodec-extra-53
     - libdvdread4
     - meld
     - mplayer
-    - remmina
-    - remmina-plugin-rdp
-    - remmina-plugin-vnc
-    - ttf-ubuntu-font-family
     - transmission-gtk
-    - ubuntu-restricted-extras
     - vlc
     - xclip
     - youtube-dl
     # manually accept eula
     # - ttf-mscorefonts-installer
+  when: ansible_distribution == 'Ubuntu'
+  become: yes
+
+- name: ensure legacy desktop packages
+  apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
+  with_items:
+    - fonts-ubuntu-font-family-console
+    - freerdp-x11
+    - lame
+    - libavcodec-extra-53
+    - remmina
+    - remmina-plugin-rdp
+    - remmina-plugin-vnc
+    - ttf-ubuntu-font-family
+    - ubuntu-restricted-extras
     # install the Vista fonts
     # http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
-  sudo: yes
+  when: ansible_distribution_release != 'bionic'
+  become: yes
