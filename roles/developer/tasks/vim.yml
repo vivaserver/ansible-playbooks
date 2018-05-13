@@ -1,12 +1,18 @@
 ---
 - name: ensure Vim package
+  apt: pkg=vim state=latest install_recommends=no
+  when: ansible_distribution == 'Ubuntu'
   become: yes
+  tags:
+    - vim
+
+- name: ensure essential Vim addons
   apt: pkg={{ item }} state=latest install_recommends=no
   with_items:
-    - vim
     - vim-airline
     - vim-command-t
   when: ansible_distribution_release == "bionic"
+  become: yes
   tags:
     - vim
 
