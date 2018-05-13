@@ -3,6 +3,11 @@
   when: ansible_distribution == 'Ubuntu'
   become: yes
 
+- name: ensure nice icons repo.
+  apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
+  when: ansible_distribution_release == 'bionic'
+  become: yes
+
 - name: ensure desktop packages
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
   with_items:
@@ -20,6 +25,11 @@
     # manually accept eula
     # - ttf-mscorefonts-installer
   when: ansible_distribution == 'Ubuntu'
+  become: yes
+
+- name: ensure nice icons package
+  apt: pkg=oranchelo-icon-theme update_cache=yes state=latest install_recommends=no
+  when: ansible_distribution_release == 'bionic'
   become: yes
 
 - name: ensure legacy desktop packages
