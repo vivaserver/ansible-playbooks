@@ -1,7 +1,7 @@
 - name: ensure partners repo available
-  apt_repository: repo='deb http://archive.canonical.com/ubuntu precise partner' state=present
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'precise'
-  sudo: yes
+  apt_repository: repo="deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner" state=present
+  when: ansible_distribution == 'Ubuntu'
+  become: yes
 
 - name: ensure desktop packages
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
