@@ -6,6 +6,12 @@
   tags:
     - vim
 
+- name: ensure vim-plug
+  command: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  when: ansible_distribution_release == "bionic"
+  tags:
+    - vim
+
 - name: ensure essential Vim addons
   apt: pkg={{ item }} state=latest install_recommends=no
   with_items:
@@ -18,3 +24,5 @@
 
 - import_tasks: vim_vundle.yml
   when: ansible_distribution_release != "bionic"
+  tags:
+    - vim
