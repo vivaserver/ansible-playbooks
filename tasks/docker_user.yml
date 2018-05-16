@@ -6,6 +6,7 @@
 
 - name: add {{ remote_user.stdout }} to docker user
   user: name={{ remote_user.stdout }} groups=docker append=yes
+  become: yes
 
 # ref. http://stackoverflow.com/a/37334415
 - name: add docker group to passwordless sudo
@@ -14,5 +15,6 @@
     state: present
     regexp: '^%docker'
     line: '%docker ALL=(ALL) NOPASSWD: ALL'
+  become: yes
 
 #- vim: foldlevel=3
