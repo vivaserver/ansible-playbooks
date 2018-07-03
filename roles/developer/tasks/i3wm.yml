@@ -16,6 +16,7 @@
   with_items:
     - i3
     - feh
+    - lxappearance
     - lxterminal
     - rxvt-unicode-256color
     - xfonts-terminus
