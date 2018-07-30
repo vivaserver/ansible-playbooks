@@ -6,8 +6,10 @@
     - git
     - mc
     # - mp3blaster
+    - mmv
     - ncdu
     - ranger
+    - sshfs
     - tig
     - tmux
     - unrar
