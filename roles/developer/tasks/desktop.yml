@@ -1,12 +1,16 @@
 - name: ensure partners repo available
   apt_repository: repo="deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner" state=present
   when: ansible_distribution == 'Ubuntu'
-  become: yes
+  sudo: yes
+  tags:
+    - desktop
 
 - name: ensure nice icons repo.
   apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
   when: ansible_distribution_release == 'bionic'
-  become: yes
+  sudo: yes
+  tags:
+    - desktop
 
 - name: ensure desktop packages
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
@@ -15,6 +19,8 @@
     - chromium-codecs-ffmpeg
     - ffmpeg
     - firefox
+    - gnome-tweak-tool
+    - gthumb
     - libdvdread4
     - meld
     - mplayer
@@ -26,11 +32,28 @@
     # - ttf-mscorefonts-installer
   when: ansible_distribution == 'Ubuntu'
   become: yes
+  tags:
+    - desktop
+
+- name: ensure bloatware-less desktop packages
+  apt: pkg={{ item }} state=absent install_recommends=no
+  with_items:
+    - libreoffice-avmedia-backend-gstreamer
+    - libreoffice-calc
+    - libreoffice-draw
+    - libreoffice-impress
+    - libreoffice-math
+  when: ansible_distribution == 'Ubuntu'
+  become: yes
+  tags:
+    - desktop
 
 - name: ensure nice icons package
   apt: pkg=oranchelo-icon-theme update_cache=yes state=latest install_recommends=no
   when: ansible_distribution_release == 'bionic'
   become: yes
+  tags:
+    - desktop
 
 - name: ensure legacy desktop packages
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
