@@ -22,6 +22,7 @@
   apt: pkg={{ item }} state=latest install_recommends=no
   with_items:
     - vim-airline
+    - vim-airline-themes
     - vim-command-t
   when: ansible_distribution_release == "bionic"
   become: yes
