@@ -3,6 +3,10 @@
 Tested on Ubuntu 12.04 using Vagrant with the LXC provider plugin.
 Laptop provisioning tested on ElementaryOS 0.2 "Luna".
 
+## Requisites
+
+    $ ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+
 ## Provision an elementaryOS development laptop
 
 Just execute the developer role against a local elementaryOS host:
