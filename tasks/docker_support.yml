@@ -29,7 +29,9 @@
 
 - name: ensure Ansible python support
   when: ansible_distribution_release == "bionic"
-  pip: name=docker-py
+  pip: name=docker
   become: yes
   tags:
     - bionic
+
+# vim: nofoldenable
