@@ -1,26 +1,32 @@
 ---
 - name: ensure i3 repo available
-  apt_repository: repo='deb http://debian.sur5r.net/i3/ precise universe'
-  sudo: yes
+  apt_repository: repo='deb http://debian.sur5r.net/i3/ bionic universe'
+  become: yes
   tags:
     - i3
 
 - name: ensure i3 repo installable from
   command: apt-get --allow-unauthenticated install sur5r-keyring
-  sudo: yes
+  become: yes
   tags:
     - i3
 
 - name: ensure i3 packages available
-  apt: pkg={{ item }} update_cache=yes state=latest
-  with_items:
-    - i3
-    - feh
-    - lxappearance
-    - lxterminal
-    - rxvt-unicode-256color
-    - xfonts-terminus
-    - xsel
+  apt:
+    name: "{{ items }}"
+    update_cache: yes
+    state: latest
+  vars:
+    items:
+      - i3
+      - i3blocks
+      - feh
+      - fonts-font-awesome
+      - lxappearance
+      - lxterminal
+      - rxvt-unicode-256color
+      - xfonts-terminus
+      - xsel
   become: yes
   tags:
     - i3
