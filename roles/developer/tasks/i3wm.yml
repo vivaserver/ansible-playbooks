@@ -20,6 +20,7 @@
     - lxterminal
     - rxvt-unicode-256color
     - xfonts-terminus
-  sudo: yes
+    - xsel
+  become: yes
   tags:
     - i3
