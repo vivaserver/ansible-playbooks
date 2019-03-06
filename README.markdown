@@ -43,7 +43,7 @@ Some packages require user interaction to confirm EULAs. So, must be installed m
 
 * [Insanely complete Ansible playbook, showing off all the options][gst]
 * [Provisioning with Ansible and Vagrant][scl]
-* [Simple LAMP using Ansible][git] 
+* [Simple LAMP using Ansible][git]
 
 [git]: https://github.com/ansible/ansible-examples/tree/master/lamp_simple
 [scl]: http://julien.ponge.org/blog/scalable-and-understandable-provisioning-with-ansible-and-vagrant/

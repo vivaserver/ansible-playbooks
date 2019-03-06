@@ -43,6 +43,8 @@
     - libreoffice-draw
     - libreoffice-impress
     - libreoffice-math
+    - simple-scan
+    - sane-utils
   when: ansible_distribution == 'Ubuntu'
   become: yes
   tags:
