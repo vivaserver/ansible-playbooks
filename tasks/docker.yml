@@ -13,20 +13,22 @@
     - docker
 
 - name: ensure packages
-  apt: pkg={{ item }} update_cache=yes state=latest
+  apt: name={{ packages }} update_cache=yes state=latest
   when: ansible_distribution == "Ubuntu" and ansible_distribution_release != "bionic"
-  with_items:
-    - docker-ce
+  vars:
+    packages:
+      - docker-ce
   become: yes
   tags:
     - docker
 
 - name: ensure packages
-  apt: pkg={{ item }} update_cache=yes state=latest
+  apt: name={{ packages }} update_cache=yes state=latest
   when: ansible_distribution_release == "bionic"
-  with_items:
-    - docker.io
-    - docker-compose
+  vars:
+    packages:
+      - docker.io
+      - docker-compose
   become: yes
   tags:
     - docker
