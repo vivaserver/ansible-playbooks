@@ -13,6 +13,7 @@
     - sshfs
     - tig
     - tmux
+    - tmuxinator
     - unrar
     # - weechat
   become: yes
