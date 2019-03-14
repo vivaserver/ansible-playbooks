@@ -27,7 +27,6 @@
     - transmission-gtk
     - vlc
     - xclip
-    - youtube-dl
     # manually accept eula
     # - ttf-mscorefonts-installer
   when: ansible_distribution == 'Ubuntu'
