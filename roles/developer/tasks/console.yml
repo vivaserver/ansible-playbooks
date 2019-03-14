@@ -20,6 +20,14 @@
   tags:
     - console
 
+- name: ensure latest tmuxinator
+  gem:
+    name: tmuxinator
+    state: latest
+  become: yes
+  tags:
+    - console
+
 - name: ensure updated console packages installed
   apt: pkg={{ item }} state=latest install_recommends=no
   when: ansible_distribution_release == "bionic"
