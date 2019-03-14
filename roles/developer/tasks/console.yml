@@ -28,6 +28,16 @@
   tags:
     - console
 
+- name: ensure youtube ripping
+  pip:
+    name:
+      - mps-youtube
+      - pyperclip
+      - youtube-dl
+  become: yes
+  tags:
+    - console
+
 - name: ensure updated console packages installed
   apt: pkg={{ item }} state=latest install_recommends=no
   when: ansible_distribution_release == "bionic"
