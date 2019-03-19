@@ -7,7 +7,7 @@
 #      ....
 #      $ ssh localhost
 #      ....
-# 4. $ ansible-playbook -vv --ask-sudo-pass --tags=tlp developer.yml
+# 4. $ ansible-playbook developer.yml -v -t handbrake
 ---
 - hosts: localhost
   tasks:
