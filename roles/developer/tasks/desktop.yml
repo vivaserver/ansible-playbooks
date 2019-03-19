@@ -1,17 +1,3 @@
-- name: ensure partners repo available
-  apt_repository: repo="deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner" state=present
-  when: ansible_distribution == 'Ubuntu'
-  sudo: yes
-  tags:
-    - desktop
-
-- name: ensure nice icons repo.
-  apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
-  when: ansible_distribution_release == 'bionic'
-  sudo: yes
-  tags:
-    - desktop
-
 - name: ensure desktop packages
   apt: pkg={{ item }} update_cache=yes state=latest install_recommends=no
   with_items:
@@ -50,6 +36,29 @@
   tags:
     - desktop
 
+- name: ensure latest Handbrake repo
+  apt_repository: repo='ppa:stebbins/handbrake-releases'
+  when: ansible_distribution_release == 'bionic'
+  become: yes
+  tags:
+    - desktop
+    - handbrake
+
+- name: ensure latest Handbrake package (binary is ghb)
+  apt: pkg=handbrake-gtk update_cache=yes state=latest install_recommends=no
+  when: ansible_distribution_release == 'bionic'
+  become: yes
+  tags:
+    - desktop
+    - handbrake
+
+- name: ensure nice icons repo.
+  apt_repository: repo='ppa:oranchelo/oranchelo-icon-theme'
+  when: ansible_distribution_release == 'bionic'
+  sudo: yes
+  tags:
+    - desktop
+
 - name: ensure nice icons package
   apt: pkg=oranchelo-icon-theme update_cache=yes state=latest install_recommends=no
   when: ansible_distribution_release == 'bionic'
@@ -73,3 +82,10 @@
     # http://plasmasturm.org/code/vistafonts-installer/vistafonts-installer
   when: ansible_distribution_release != 'bionic'
   become: yes
+
+- name: ensure partners repo available
+  apt_repository: repo="deb http://archive.canonical.com/ubuntu {{ ansible_distribution_release }} partner" state=present
+  when: ansible_distribution == 'Ubuntu'
+  sudo: yes
+  tags:
+    - desktop
