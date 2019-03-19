@@ -1,12 +1,22 @@
+- name: ensure docker sudoer group
+  group: name=docker state=present
+  become: yes
+  tags:
+    - sudoer
+
 # ref. https://stackoverflow.com/a/26399105
 - name: get the username running the deploy
   local_action: command whoami
   register: remote_user
 # - debug: var=remote_user
+  tags:
+    - sudoer
 
-- name: add {{ remote_user.stdout }} to docker user
+- name: add {{ remote_user.stdout }} to docker group
   user: name={{ remote_user.stdout }} groups=docker append=yes
   become: yes
+  tags:
+    - sudoer
 
 # ref. http://stackoverflow.com/a/37334415
 - name: add docker group to passwordless sudo
@@ -16,5 +26,7 @@
     regexp: '^%docker'
     line: '%docker ALL=(ALL) NOPASSWD: ALL'
   become: yes
+  tags:
+    - sudoer
 
 #- vim: foldlevel=3
