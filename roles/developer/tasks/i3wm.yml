@@ -23,6 +23,7 @@
     state: latest
   vars:
     items:
+      - i3blocks
       - feh
       - fonts-font-awesome
       - lxappearance
