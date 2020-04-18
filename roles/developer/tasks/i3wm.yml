@@ -1,25 +1,28 @@
 ---
-- name: ensure i3 repo available
-  apt_repository: repo='deb http://debian.sur5r.net/i3/ bionic universe'
+- name: ensure i3-gaps repo available
+  apt_repository: repo='ppa:kgilmer/regolith-stable'
+  when: ansible_distribution_release == "bionic"
   become: yes
   tags:
     - i3
 
-- name: ensure i3 repo installable from
-  command: apt-get --allow-unauthenticated install sur5r-keyring
-  become: yes
-  tags:
-    - i3
+- name: ensure i3-gaps packages
+  apt:
+    name: "{{ items }}"
+    update_cache: yes
+    state: latest
+  when: ansible_distribution_release == "bionic"
+  vars:
+    items:
+      - i3-gaps
 
-- name: ensure i3 packages available
+- name: ensure i3 packages
   apt:
     name: "{{ items }}"
     update_cache: yes
     state: latest
   vars:
     items:
-      - i3
-      - i3blocks
       - feh
       - fonts-font-awesome
       - lxappearance
