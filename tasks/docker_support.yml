@@ -1,3 +1,8 @@
+# v20.04 LTS (focal)
+# v18.04 LTS (bionic)
+# v16.04 LTS (xenial)
+# v14.04 LTS (trusty)
+
 # ensure remote Docker support for Ansible Docker module
 - name: ensure packages
   apt: pkg=python-setuptools state=latest
@@ -6,9 +11,12 @@
 - name: ensure python support
   apt: pkg=python-pip
   become: yes
-  when: ansible_distribution == "Ubuntu"
-  tags:
-    - bionic
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_release == "bionic"
+
+- name: ensure python support
+  apt: pkg=python3-pip
+  become: yes
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_release == "focal"
 
 # ref. https://github.com/anarcher/ansible-docker-registry/issues/1
 - name: ensure python support upgraded
@@ -25,13 +33,18 @@
 
 - name: ensure compose support
   pip: name=docker-compose
-  when: ansible_distribution == "Ubuntu" and ansible_distribution_release != "bionic"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version < "18.04"
+
+- name: ensure compose support
+  command: pip3 install docker-compose
+  become: yes
+  when: ansible_distribution_release == "focal"
+  tags:
+    - focal
 
 - name: ensure Ansible python support
   when: ansible_distribution_release == "bionic"
   pip: name=docker
   become: yes
-  tags:
-    - bionic
 
 # vim: nofoldenable
